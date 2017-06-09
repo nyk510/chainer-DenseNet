@@ -36,7 +36,7 @@ class PreprocessedDataset(chainer.dataset.DatasetMixin):
             pad_x[:, 4:36, 4:36] = x
             top = random.randint(0, 8)
             left = random.randint(0, 8)
-            x = pad_x[:, top:top+32, left:left+32]
+            x = pad_x[:, top:top + 32, left:left + 32]
 
             # horizontal flip
             if random.randint(0, 1):

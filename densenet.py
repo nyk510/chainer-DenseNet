@@ -51,7 +51,7 @@ class DenseNet(chainer.Chain):
                 If n_layer=12, the network is made out of 40 (12*3+4) layers.
                 If n_layer=32, the network is made out of 100 (32*3+4) layers.
             growth_rate: Number of output feature maps of each convolution
-                layer in dense blocks, which is difined as k in the paper.
+                layer in dense blocks, which is defined as k in the paper.
             n_class: Output class.
             dropout_ratio: Dropout ratio.
             in_ch: Number of output feature maps of first convolution layer.

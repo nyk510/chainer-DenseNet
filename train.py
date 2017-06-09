@@ -16,7 +16,6 @@ from updater import ParallelUpdater
 
 
 class TestModeEvaluator(extensions.Evaluator):
-
     def evaluate(self):
         model = self.get_target('main')
         model.predictor.train = False
@@ -26,8 +25,7 @@ class TestModeEvaluator(extensions.Evaluator):
 
 
 def main(args):
-
-    assert((args.depth - args.block - 1) % args.block == 0)
+    assert ((args.depth - args.block - 1) % args.block == 0)
     n_layer = (args.depth - args.block - 1) / args.block
     if args.dataset == 'cifar10':
         train, test = cifar.get_cifar10()
@@ -45,10 +43,10 @@ def main(args):
     train = PreprocessedDataset(train, mean, std, random=args.augment)
     test = PreprocessedDataset(test, mean, std)
 
-    test_batchsize = args.batchsize // (args.split_size * len(args.gpus))
+    test_batch_size = args.batchsize // (args.split_size * len(args.gpus))
     train_iter = chainer.iterators.SerialIterator(train, args.batchsize)
     test_iter = chainer.iterators.SerialIterator(
-        test, test_batchsize, repeat=False, shuffle=False)
+        test, test_batch_size, repeat=False, shuffle=False)
 
     model = chainer.links.Classifier(DenseNet(
         n_layer, args.growth_rate, n_class, args.drop_ratio, 16, args.block))

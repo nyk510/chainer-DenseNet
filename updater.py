@@ -11,7 +11,6 @@ import six
 
 
 class StandardUpdater(training.StandardUpdater):
-
     def __init__(self, iterator, optimizer, split_size=1,
                  converter=convert.concat_examples,
                  device=None, loss_func=None):
@@ -42,10 +41,9 @@ class StandardUpdater(training.StandardUpdater):
 
 
 class ParallelUpdater(training.ParallelUpdater):
-
     def __init__(self, iterator, optimizer, split_size=1,
-                converter=convert.concat_examples, models=None,
-                devices=None, loss_func=None):
+                 converter=convert.concat_examples, models=None,
+                 devices=None, loss_func=None):
         super(ParallelUpdater, self).__init__(
             iterator=iterator,
             optimizer=optimizer,
